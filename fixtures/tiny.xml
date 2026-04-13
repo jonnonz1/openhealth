@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  tiny.xml — minimal hand-crafted Apple Health export fixture.
+
+  Ref-date for deterministic snapshots: 2026-04-13 (Monday).
+  Records live mostly in the preceding week (2026-04-06 → 2026-04-12)
+  so they land in the "previous week" bucket of weekly_summary.
+
+  Exercises every code path:
+    - ExportDate, Me
+    - Source name with U+00A0 NBSP ("Apple Watch")
+    - Steps/distance/flights multi-source dedup (Watch beats iPhone)
+    - HeartRate samples across two zones
+    - RestingHeartRate, HRV, RespiratoryRate
+    - SpO2 stored as decimal 0.96 → rendered 96.0%
+    - BodyMass duplicate (Withings + MyFitnessPal same date + value) → deduped
+    - BodyMass earlier month → populates monthly weight trend
+    - Dietary energy/protein/fat/carbs → nutrition weekly
+    - WalkingSpeed → walking speed trend
+    - Sleep night 2026-04-11: Watch records + AutoSleep record (dropped by source priority)
+    - Sleep "AsleepCore/Deep/REM/Awake/InBed" all present, crossing 6am boundary
+    - ActivitySummary for 2026-04-10
+    - Workout (Running) with WorkoutStatistics + MetadataEntry
+      - HKWeatherTemperature "72 F" (Fahrenheit)
+      - HKWeatherHumidity "5500 %" (hundredths → 55%)
+-->
+<HealthData locale="en_US">
+  <ExportDate value="2026-04-12 10:00:00 +0000"/>
+  <Me HKCharacteristicTypeIdentifierDateOfBirth="2000-01-01"
+      HKCharacteristicTypeIdentifierBiologicalSex="HKBiologicalSexNotSet"
+      HKCharacteristicTypeIdentifierBloodType="HKBloodTypeNotSet"/>
+
+  <!-- Step overlap: Apple Watch (7000) beats iPhone (4000) -->
+  <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Apple&#160;Watch"
+          unit="count"
+          startDate="2026-04-10 12:00:00 +0000" endDate="2026-04-10 12:30:00 +0000"
+          value="7000"/>
+  <Record type="HKQuantityTypeIdentifierStepCount" sourceName="iPhone"
+          unit="count"
+          startDate="2026-04-10 12:00:00 +0000" endDate="2026-04-10 12:30:00 +0000"
+          value="4000"/>
+
+  <!-- Distance & flights (single source) -->
+  <Record type="HKQuantityTypeIdentifierDistanceWalkingRunning" sourceName="Apple&#160;Watch"
+          unit="km"
+          startDate="2026-04-10 12:00:00 +0000" endDate="2026-04-10 12:30:00 +0000"
+          value="6.5"/>
+  <Record type="HKQuantityTypeIdentifierFlightsClimbed" sourceName="Apple&#160;Watch"
+          unit="count"
+          startDate="2026-04-10 12:00:00 +0000" endDate="2026-04-10 12:30:00 +0000"
+          value="12"/>
+
+  <!-- HR samples: 100 bpm (zone 2, ratio 0.555) + 150 bpm (zone 4, ratio 0.833) -->
+  <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="Apple&#160;Watch"
+          unit="count/min"
+          startDate="2026-04-10 12:00:00 +0000" endDate="2026-04-10 12:00:01 +0000"
+          value="100"/>
+  <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="Apple&#160;Watch"
+          unit="count/min"
+          startDate="2026-04-10 12:00:02 +0000" endDate="2026-04-10 12:00:03 +0000"
+          value="150"/>
+
+  <!-- Recovery metrics -->
+  <Record type="HKQuantityTypeIdentifierRestingHeartRate" sourceName="Apple&#160;Watch"
+          unit="count/min"
+          startDate="2026-04-10 06:00:00 +0000" endDate="2026-04-10 06:00:01 +0000"
+          value="58"/>
+  <Record type="HKQuantityTypeIdentifierHeartRateVariabilitySDNN" sourceName="Apple&#160;Watch"
+          unit="ms"
+          startDate="2026-04-10 06:00:00 +0000" endDate="2026-04-10 06:00:01 +0000"
+          value="45"/>
+  <Record type="HKQuantityTypeIdentifierOxygenSaturation" sourceName="Apple&#160;Watch"
+          unit="%"
+          startDate="2026-04-10 07:00:00 +0000" endDate="2026-04-10 07:00:01 +0000"
+          value="0.96"/>
+  <Record type="HKQuantityTypeIdentifierRespiratoryRate" sourceName="Apple&#160;Watch"
+          unit="count/min"
+          startDate="2026-04-10 07:00:00 +0000" endDate="2026-04-10 07:00:01 +0000"
+          value="14.5"/>
+
+  <!-- Weight: Withings + MyFitnessPal same date/value → dedup to one reading -->
+  <Record type="HKQuantityTypeIdentifierBodyMass" sourceName="Withings"
+          unit="kg"
+          startDate="2026-04-10 07:00:00 +0000" endDate="2026-04-10 07:00:01 +0000"
+          value="74.5"/>
+  <Record type="HKQuantityTypeIdentifierBodyMass" sourceName="MyFitnessPal"
+          unit="kg"
+          startDate="2026-04-10 08:00:00 +0000" endDate="2026-04-10 08:00:01 +0000"
+          value="74.5"/>
+  <!-- Earlier-month reading → monthly weight trend shows two months -->
+  <Record type="HKQuantityTypeIdentifierBodyMass" sourceName="Withings"
+          unit="kg"
+          startDate="2026-03-10 07:00:00 +0000" endDate="2026-03-10 07:00:01 +0000"
+          value="75.8"/>
+
+  <!-- Nutrition (one day tracked) -->
+  <Record type="HKQuantityTypeIdentifierDietaryEnergyConsumed" sourceName="MyFitnessPal"
+          unit="kJ"
+          startDate="2026-04-10 20:00:00 +0000" endDate="2026-04-10 20:00:01 +0000"
+          value="8368"/>
+  <Record type="HKQuantityTypeIdentifierDietaryProtein" sourceName="MyFitnessPal"
+          unit="g"
+          startDate="2026-04-10 20:00:00 +0000" endDate="2026-04-10 20:00:01 +0000"
+          value="150"/>
+  <Record type="HKQuantityTypeIdentifierDietaryFatTotal" sourceName="MyFitnessPal"
+          unit="g"
+          startDate="2026-04-10 20:00:00 +0000" endDate="2026-04-10 20:00:01 +0000"
+          value="80"/>
+  <Record type="HKQuantityTypeIdentifierDietaryCarbohydrates" sourceName="MyFitnessPal"
+          unit="g"
+          startDate="2026-04-10 20:00:00 +0000" endDate="2026-04-10 20:00:01 +0000"
+          value="200"/>
+
+  <!-- Walking speed -->
+  <Record type="HKQuantityTypeIdentifierWalkingSpeed" sourceName="iPhone"
+          unit="km/hr"
+          startDate="2026-04-10 12:00:00 +0000" endDate="2026-04-10 12:00:01 +0000"
+          value="5.2"/>
+
+  <!-- Sleep night of 2026-04-11 (records span 22:00 on 11th → 05:30 on 12th).
+       Apple Watch (priority 1) wins over AutoSleep (priority 2). -->
+  <Record type="HKCategoryTypeIdentifierSleepAnalysis" sourceName="Apple&#160;Watch"
+          startDate="2026-04-11 22:00:00 +0000" endDate="2026-04-12 05:30:00 +0000"
+          value="HKCategoryValueSleepAnalysisInBed"/>
+  <Record type="HKCategoryTypeIdentifierSleepAnalysis" sourceName="Apple&#160;Watch"
+          startDate="2026-04-11 22:30:00 +0000" endDate="2026-04-12 00:30:00 +0000"
+          value="HKCategoryValueSleepAnalysisAsleepCore"/>
+  <Record type="HKCategoryTypeIdentifierSleepAnalysis" sourceName="Apple&#160;Watch"
+          startDate="2026-04-12 00:30:00 +0000" endDate="2026-04-12 02:00:00 +0000"
+          value="HKCategoryValueSleepAnalysisAsleepDeep"/>
+  <Record type="HKCategoryTypeIdentifierSleepAnalysis" sourceName="Apple&#160;Watch"
+          startDate="2026-04-12 02:00:00 +0000" endDate="2026-04-12 04:00:00 +0000"
+          value="HKCategoryValueSleepAnalysisAsleepREM"/>
+  <Record type="HKCategoryTypeIdentifierSleepAnalysis" sourceName="Apple&#160;Watch"
+          startDate="2026-04-12 04:00:00 +0000" endDate="2026-04-12 05:30:00 +0000"
+          value="HKCategoryValueSleepAnalysisAwake"/>
+  <!-- AutoSleep record for the same night: lower priority, should be dropped -->
+  <Record type="HKCategoryTypeIdentifierSleepAnalysis" sourceName="AutoSleep"
+          startDate="2026-04-11 23:00:00 +0000" endDate="2026-04-12 05:00:00 +0000"
+          value="HKCategoryValueSleepAnalysisAsleepUnspecified"/>
+
+  <ActivitySummary dateComponents="2026-04-10"
+                   activeEnergyBurned="2400" activeEnergyBurnedGoal="2000"
+                   activeEnergyBurnedUnit="kJ"
+                   appleExerciseTime="40" appleExerciseTimeGoal="30"
+                   appleStandHours="10" appleStandHoursGoal="12"
+                   appleMoveTime="0" appleMoveTimeGoal="0"/>
+
+  <Workout workoutActivityType="HKWorkoutActivityTypeRunning"
+           duration="30" durationUnit="min"
+           totalDistance="5.0" totalDistanceUnit="km"
+           totalEnergyBurned="1500" totalEnergyBurnedUnit="kJ"
+           sourceName="Apple&#160;Watch"
+           startDate="2026-04-11 08:00:00 +0000" endDate="2026-04-11 08:30:00 +0000">
+    <WorkoutStatistics type="HKQuantityTypeIdentifierHeartRate"
+                       startDate="2026-04-11 08:00:00 +0000" endDate="2026-04-11 08:30:00 +0000"
+                       average="145" minimum="110" maximum="170" unit="count/min"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierStepCount"
+                       startDate="2026-04-11 08:00:00 +0000" endDate="2026-04-11 08:30:00 +0000"
+                       sum="4800" unit="count"/>
+    <MetadataEntry key="HKWeatherTemperature" value="72 F"/>
+    <MetadataEntry key="HKWeatherHumidity" value="5500 %"/>
+    <MetadataEntry key="HKIndoorWorkout" value="0"/>
+  </Workout>
+</HealthData>
