@@ -4,7 +4,8 @@
     "rootDir": ".",
     "outDir": "./dist",
     "noEmit": true,
-    "types": ["node"]
+    "types": ["@cloudflare/workers-types"],
+    "lib": ["ES2022"]
   },
-  "include": ["src/**/*", "__tests__/**/*"]
+  "include": ["src/**/*"]
 }

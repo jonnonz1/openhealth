@@ -11,5 +11,9 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "fflate": "^0.8.2",
+    "saxes": "^6.0.0"
   }
 }

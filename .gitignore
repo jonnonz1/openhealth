@@ -32,6 +32,16 @@ output/
 # Local-only AI/agent context files (not for public repo)
 CLAUDE.md
 AGENTS.md
+.claude/
 .cursor/
 .cursorrules
 .aider*
+
+# CLI build artifacts
+packages/cli/bin/
+packages/cli/*.bun-build
+packages/cli/.*.bun-build
+
+# Wrangler state
+.wrangler/
+packages/signaling/.wrangler/

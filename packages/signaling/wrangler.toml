@@ -1,0 +1,11 @@
+name = "openhealth-signaling"
+main = "src/worker.ts"
+compatibility_date = "2025-04-01"
+
+[[durable_objects.bindings]]
+name = "SESSIONS"
+class_name = "Session"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Session"]

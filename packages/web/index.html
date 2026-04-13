@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>openhealth — Apple Health → Markdown</title>
     <meta name="description" content="Turn your Apple Health export into LLM-readable markdown. Processed 100% in your browser. Nothing leaves your device." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="mask-icon" href="/favicon.svg" color="#609966" />
+    <meta name="theme-color" content="#609966" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/src/styles.css" />
   </head>
   <body>
+    <div id="privacy-mount" class="privacy-banner-host"></div>
     <header class="site-header">
       <a class="wordmark" href="/">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 14a8 8 0 1 0 16 0L12 2Z"/></svg>
@@ -28,17 +32,16 @@
 
     <main id="app">
       <section class="hero">
-        <p class="eyebrow">Open-source · MIT</p>
-        <h1>Your Apple Health data, finally readable by an LLM.</h1>
+        <h1>Chat with your Apple Health data.</h1>
         <p class="lead">
-          Your iPhone has been collecting millions of data points about how you sleep, train, and recover. <strong>openhealth</strong> turns that export into seven concise markdown files any chatbot can read — so you can have a real conversation with an LLM about your own health history.
+          <strong>openhealth</strong> turns your Apple Health export into seven short markdown files any LLM can read. Drop the zip, get the files, paste them into ChatGPT or Claude — and start asking real questions about how you actually sleep, train, and recover.
         </p>
       </section>
 
       <section class="panel dropzone-panel">
         <h2>Drop your export here</h2>
         <div id="dropzone-mount"></div>
-        <div id="privacy-mount"></div>
+        <div id="qr-mount"></div>
       </section>
 
       <section id="how" class="panel">
@@ -107,8 +110,10 @@
         <div>
           <span class="wordmark-small">openhealth</span>
           <p class="footer-tagline">Your data. Your AI coach. No middle man.</p>
+          <p class="footer-byline">Built by <a href="https://jonno.nz" rel="noopener">John</a> — more writing at <a href="https://jonno.nz" rel="noopener">jonno.nz</a>.</p>
         </div>
         <nav class="footer-links">
+          <a href="https://jonno.nz" rel="noopener">Blog</a>
           <a href="https://github.com/jonnonz1/openhealth" rel="noopener">GitHub</a>
           <a href="https://github.com/jonnonz1/openhealth/issues" rel="noopener">Report an issue</a>
           <a href="https://github.com/jonnonz1/openhealth/blob/main/LICENSE" rel="noopener">MIT license</a>
