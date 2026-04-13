@@ -1,0 +1,17 @@
+{
+  "name": "@openhealth/cli",
+  "version": "0.0.0",
+  "description": "Command-line interface for openhealth.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "openhealth": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "bun build ./src/index.ts --compile --outfile bin/openhealth"
+  },
+  "dependencies": {
+    "@openhealth/core": "workspace:*"
+  }
+}

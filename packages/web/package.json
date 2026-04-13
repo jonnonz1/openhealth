@@ -1,0 +1,20 @@
+{
+  "name": "@openhealth/web",
+  "version": "0.0.0",
+  "description": "openhealth.app — drop your Apple Health export, get markdown. Client-side only.",
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@openhealth/core": "workspace:*"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}

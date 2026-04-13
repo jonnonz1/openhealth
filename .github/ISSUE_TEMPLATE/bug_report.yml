@@ -1,0 +1,55 @@
+name: Bug report
+description: Something in openhealth isn't working as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please do not paste any raw Apple Health export data into this issue.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you expect, and what did you actually get?
+      placeholder: Expected … but got …
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Minimal steps that reliably trigger the problem.
+      placeholder: |
+        1. Run `openhealth export.zip -o ./output`
+        2. …
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: openhealth version / commit
+      placeholder: v0.1.0 or abc1234
+    validations:
+      required: true
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Which surface?
+      options:
+        - CLI
+        - Web app
+        - Phone handoff
+        - Core library (as a dependency)
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Node/Bun version, browser if relevant.
+      placeholder: macOS 14.5, Bun 1.1.30, Firefox 130
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs / error output
+      render: shell

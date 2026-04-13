@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>openhealth — Apple Health → Markdown</title>
+    <meta name="description" content="Turn your Apple Health export into LLM-readable markdown. Processed 100% in your browser. Nothing leaves your device." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="/">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 14a8 8 0 1 0 16 0L12 2Z"/></svg>
+        <span>openhealth</span>
+      </a>
+      <nav>
+        <a href="#how" class="nav-link">How it works</a>
+        <a href="#privacy" class="nav-link">Privacy</a>
+        <a href="https://github.com/jonnonz1/openhealth" class="nav-link github" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12a11.5 11.5 0 0 0 7.9 10.9c.6.1.8-.3.8-.6v-2.2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.4-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.5-2.7 5.5-5.3 5.8.4.3.8 1 .8 2.1v3.1c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5Z"/></svg>
+          Source
+        </a>
+      </nav>
+    </header>
+
+    <main id="app">
+      <section class="hero">
+        <p class="eyebrow">Open-source · MIT</p>
+        <h1>Your Apple Health data, finally readable by an LLM.</h1>
+        <p class="lead">
+          Your iPhone has been collecting millions of data points about how you sleep, train, and recover. <strong>openhealth</strong> turns that export into seven concise markdown files any chatbot can read — so you can have a real conversation with an LLM about your own health history.
+        </p>
+      </section>
+
+      <section class="panel dropzone-panel">
+        <h2>Drop your export here</h2>
+        <div id="dropzone-mount"></div>
+        <div id="privacy-mount"></div>
+      </section>
+
+      <section id="how" class="panel">
+        <h2>How do I export my Apple Health data?</h2>
+        <ol class="steps">
+          <li>
+            <span class="step-num">1</span>
+            <div>
+              <strong>Open the Health app</strong> on your iPhone.
+            </div>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <div>
+              Tap your <strong>profile icon</strong> in the top-right corner.
+            </div>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <div>
+              Scroll to the bottom and tap <strong>Export All Health Data</strong>. Wait a minute or two — it's a big file.
+            </div>
+          </li>
+          <li>
+            <span class="step-num">4</span>
+            <div>
+              <strong>Save the <code class="mono">export.zip</code></strong> to your device (Files, iCloud, or AirDrop it to your Mac).
+            </div>
+          </li>
+          <li>
+            <span class="step-num">5</span>
+            <div>
+              Drop the zip into the box above. Download your seven markdown files and upload them to ChatGPT, Claude, or your LLM of choice.
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="panel">
+        <h2>What do I get?</h2>
+        <p>Seven short markdown files your chatbot can actually reason about:</p>
+        <ul class="outputs">
+          <li><code class="mono">health_profile.md</code> — baselines, sources, long-term averages</li>
+          <li><code class="mono">weekly_summary.md</code> — current week with week-over-week deltas</li>
+          <li><code class="mono">workouts.md</code> — detailed training log</li>
+          <li><code class="mono">body_composition.md</code> — weight trend and nutrition</li>
+          <li><code class="mono">sleep_recovery.md</code> — sleep stages, HRV, resting HR</li>
+          <li><code class="mono">cardio_fitness.md</code> — running log and HR zones</li>
+          <li><code class="mono">prompt.md</code> — ready-to-paste coaching prompt</li>
+        </ul>
+      </section>
+
+      <section id="privacy" class="callout">
+        <h2>Your data never leaves this browser.</h2>
+        <p>
+          Every byte of your export is parsed locally, in this tab, using client-side JavaScript. There is no upload, no server, no telemetry, no analytics. Close the tab and nothing remains.
+        </p>
+        <p>
+          Don't take our word for it — <a href="https://github.com/jonnonz1/openhealth" rel="noopener">read the source on GitHub</a>.
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>
+          <span class="wordmark-small">openhealth</span>
+          <p class="footer-tagline">Your data. Your AI coach. No middle man.</p>
+        </div>
+        <nav class="footer-links">
+          <a href="https://github.com/jonnonz1/openhealth" rel="noopener">GitHub</a>
+          <a href="https://github.com/jonnonz1/openhealth/issues" rel="noopener">Report an issue</a>
+          <a href="https://github.com/jonnonz1/openhealth/blob/main/LICENSE" rel="noopener">MIT license</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

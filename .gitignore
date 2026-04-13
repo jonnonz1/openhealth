@@ -1,0 +1,37 @@
+node_modules/
+dist/
+build/
+coverage/
+.turbo/
+.vite/
+*.log
+.DS_Store
+.env
+.env.local
+.env.*.local
+*.tsbuildinfo
+
+# Bun
+bun.lockb
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Test artifacts
+playwright-report/
+test-results/
+
+# Real health exports — never commit
+/export.zip
+/export.xml
+apple_health_export/
+output/
+
+# Local-only AI/agent context files (not for public repo)
+CLAUDE.md
+AGENTS.md
+.cursor/
+.cursorrules
+.aider*

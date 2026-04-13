@@ -1,0 +1,25 @@
+{
+  "name": "openhealth-monorepo",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Turn your Apple Health export into LLM-readable markdown.",
+  "license": "MIT",
+  "packageManager": "pnpm@9.12.0",
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=9"
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm -r lint"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.0",
+    "happy-dom": "^15.7.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  }
+}
