@@ -14,4 +14,4 @@ Durable design documents for `openhealth`. Each spec is numbered, dated, and wri
 | # | Title | Status |
 |---|---|---|
 | [001](001-initial-plan.md) | Initial port + browser app + CLI plan | Active |
-| [002](002-design-system.md) | Web design system (sage-green palette, Inter + JetBrains Mono) | Active |
+| [002](002-design-system.md) | Web design system (aqua palette, Inter + JetBrains Mono) | Active |

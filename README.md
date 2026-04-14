@@ -12,12 +12,48 @@ No account. No server. No telemetry. The zip never leaves your device.
 
 ---
 
-## How it works
+## How to get your Apple Health data
 
-1. On your iPhone, open **Health** → profile icon → scroll down → **Export All Health Data**.
-2. Save the resulting `export.zip`.
-3. Hand it to `openhealth` (browser, CLI, or phone-to-desktop QR handoff — all three run the same parser, nothing is uploaded).
-4. You get seven small markdown files plus a ready-to-paste coaching prompt.
+Six taps in the Health app. Nothing leaves your phone until *you* drop the zip here.
+
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <img src="./packages/web/public/export-guide/step-1.png" width="200" alt="Summary page with profile icon highlighted" /><br/>
+      <strong>1. Open Health, tap your profile</strong><br/>
+      <sub>The avatar in the top-right corner opens your profile.</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="./packages/web/public/export-guide/step-2.png" width="200" alt="Profile page" /><br/>
+      <strong>2. Scroll down past the profile</strong><br/>
+      <sub>Past the Features and Privacy sections.</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="./packages/web/public/export-guide/step-3.png" width="200" alt="Export All Health Data button" /><br/>
+      <strong>3. Tap <em>Export All Health Data</em></strong><br/>
+      <sub>At the very bottom — the only button that packages everything.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="33%">
+      <img src="./packages/web/public/export-guide/step-4.png" width="200" alt="Export Health Data confirm dialog" /><br/>
+      <strong>4. Confirm the export</strong><br/>
+      <sub>30 s – a few minutes for up to 200 MB of data.</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="./packages/web/public/export-guide/step-5.png" width="200" alt="iOS share sheet with export.zip" /><br/>
+      <strong>5. Tap Save to Files</strong><br/>
+      <sub>The zip appears in the share sheet — around 80 MB.</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="./packages/web/public/export-guide/step-6.png" width="200" alt="iPhone Camera scanning the desktop QR" /><br/>
+      <strong>6. Or: scan the desktop QR</strong><br/>
+      <sub>Skip Files. Point your iPhone camera at the QR on openhealth — the zip goes phone-to-desktop over WebRTC.</sub>
+    </td>
+  </tr>
+</table>
+
+Then hand the zip to `openhealth` — browser, CLI, or QR handoff — all three run the same parser and nothing is uploaded.
 
 | File | Contains |
 |---|---|

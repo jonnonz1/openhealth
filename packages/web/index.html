@@ -6,8 +6,8 @@
     <title>openhealth — Apple Health → Markdown</title>
     <meta name="description" content="Turn your Apple Health export into LLM-readable markdown. Processed 100% in your browser. Nothing leaves your device." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="mask-icon" href="/favicon.svg" color="#609966" />
-    <meta name="theme-color" content="#609966" />
+    <link rel="mask-icon" href="/favicon.svg" color="#1a737a" />
+    <meta name="theme-color" content="#1a737a" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
@@ -44,40 +44,80 @@
         <div id="qr-mount"></div>
       </section>
 
-      <section id="how" class="panel">
-        <h2>How do I export my Apple Health data?</h2>
-        <ol class="steps">
-          <li>
-            <span class="step-num">1</span>
-            <div>
-              <strong>Open the Health app</strong> on your iPhone.
+      <section id="how" class="panel walkthrough-panel">
+        <h2>How do I get my Apple Health data?</h2>
+        <p class="walkthrough-lead">Six taps in the Health app. Nothing leaves your phone until <em>you</em> drop the zip here.</p>
+        <div class="walkthrough" id="walkthrough-mount">
+          <figure class="phone-frame" data-current="1" data-transition="fade" aria-label="Animated walkthrough of the Apple Health export flow">
+            <span class="phone-island" aria-hidden="true"></span>
+            <span class="phone-btn phone-btn--silent" aria-hidden="true"></span>
+            <span class="phone-btn phone-btn--volup" aria-hidden="true"></span>
+            <span class="phone-btn phone-btn--voldown" aria-hidden="true"></span>
+            <span class="phone-btn phone-btn--power" aria-hidden="true"></span>
+            <div class="phone-screen">
+              <img class="phone-screen-img" data-step="1" src="/export-guide/step-1.png" alt="Apple Health Summary page" loading="lazy" />
+              <img class="phone-screen-img" data-step="2" src="/export-guide/step-2.png" alt="Profile page" loading="lazy" />
+              <img class="phone-screen-img" data-step="3" src="/export-guide/step-3.png" alt="Export All Health Data button" loading="lazy" />
+              <img class="phone-screen-img" data-step="4" src="/export-guide/step-4.png" alt="Export confirmation dialog" loading="lazy" />
+              <img class="phone-screen-img" data-step="5" src="/export-guide/step-5.png" alt="iOS share sheet with export.zip" loading="lazy" />
+              <img class="phone-screen-img" data-step="6" src="/export-guide/step-6.png" alt="iPhone Camera scanning the desktop QR code" loading="lazy" />
             </div>
-          </li>
-          <li>
-            <span class="step-num">2</span>
-            <div>
-              Tap your <strong>profile icon</strong> in the top-right corner.
+          </figure>
+          <div class="walkthrough-side">
+            <ol class="walkthrough-steps" role="tablist" aria-label="Walkthrough steps">
+              <li class="walkthrough-step is-active" data-step="1" role="tab" tabindex="0" aria-selected="true">
+                <span class="walkthrough-num">1</span>
+                <div>
+                  <strong>Open Health, tap your profile</strong>
+                  <p>The avatar in the top-right corner opens your profile.</p>
+                </div>
+              </li>
+              <li class="walkthrough-step" data-step="2" role="tab" tabindex="-1" aria-selected="false">
+                <span class="walkthrough-num">2</span>
+                <div>
+                  <strong>Scroll down past the profile</strong>
+                  <p>Past the Features and Privacy sections.</p>
+                </div>
+              </li>
+              <li class="walkthrough-step" data-step="3" role="tab" tabindex="-1" aria-selected="false">
+                <span class="walkthrough-num">3</span>
+                <div>
+                  <strong>Tap <em>Export All Health Data</em></strong>
+                  <p>At the very bottom. The one button that packages everything.</p>
+                </div>
+              </li>
+              <li class="walkthrough-step" data-step="4" role="tab" tabindex="-1" aria-selected="false">
+                <span class="walkthrough-num">4</span>
+                <div>
+                  <strong>Confirm the export</strong>
+                  <p>30 s to a few minutes for up to 200&nbsp;MB of data.</p>
+                </div>
+              </li>
+              <li class="walkthrough-step" data-step="5" role="tab" tabindex="-1" aria-selected="false">
+                <span class="walkthrough-num">5</span>
+                <div>
+                  <strong>Tap <em>Save to Files</em></strong>
+                  <p>The zip appears in the share sheet — around 80&nbsp;MB.</p>
+                </div>
+              </li>
+              <li class="walkthrough-step" data-step="6" role="tab" tabindex="-1" aria-selected="false">
+                <span class="walkthrough-num">6</span>
+                <div>
+                  <strong>Or: scan the QR on your desktop</strong>
+                  <p>Skip Files entirely. Point your iPhone camera at the QR code on this page — your zip goes phone-to-desktop over WebRTC.</p>
+                </div>
+              </li>
+            </ol>
+            <div class="walkthrough-progress" aria-hidden="true">
+              <button type="button" class="walkthrough-dot is-active" data-step="1" aria-label="Go to step 1"></button>
+              <button type="button" class="walkthrough-dot" data-step="2" aria-label="Go to step 2"></button>
+              <button type="button" class="walkthrough-dot" data-step="3" aria-label="Go to step 3"></button>
+              <button type="button" class="walkthrough-dot" data-step="4" aria-label="Go to step 4"></button>
+              <button type="button" class="walkthrough-dot" data-step="5" aria-label="Go to step 5"></button>
+              <button type="button" class="walkthrough-dot" data-step="6" aria-label="Go to step 6"></button>
             </div>
-          </li>
-          <li>
-            <span class="step-num">3</span>
-            <div>
-              Scroll to the bottom and tap <strong>Export All Health Data</strong>. Wait a minute or two — it's a big file.
-            </div>
-          </li>
-          <li>
-            <span class="step-num">4</span>
-            <div>
-              <strong>Save the <code class="mono">export.zip</code></strong> to your device (Files, iCloud, or AirDrop it to your Mac).
-            </div>
-          </li>
-          <li>
-            <span class="step-num">5</span>
-            <div>
-              Drop the zip into the box above. Download your seven markdown files and upload them to ChatGPT, Claude, or your LLM of choice.
-            </div>
-          </li>
-        </ol>
+          </div>
+        </div>
       </section>
 
       <section class="panel">
@@ -94,13 +134,70 @@
         </ul>
       </section>
 
-      <section id="privacy" class="callout">
-        <h2>Your data never leaves this browser.</h2>
-        <p>
-          Every byte of your export is parsed locally, in this tab, using client-side JavaScript. There is no upload, no server, no telemetry, no analytics. Close the tab and nothing remains.
-        </p>
-        <p>
-          Don't take our word for it — <a href="https://github.com/jonnonz1/openhealth" rel="noopener">read the source on GitHub</a>.
+      <section id="privacy" class="callout privacy-deep">
+        <h2>Your data never leaves this device.</h2>
+        <p class="privacy-lead">Not as a principle — as a <em>mechanism</em>. Every byte of your export is parsed inside this browser tab. There is no "upload" endpoint because there is no server to upload it to.</p>
+
+        <h3>What actually happens when you drop the zip</h3>
+        <ol class="privacy-flow">
+          <li>
+            <span class="flow-num">1</span>
+            <div>
+              <strong>The browser hands this tab a file reference.</strong>
+              <p>The standard Web <code class="mono">File</code> API passes a handle to the zip. No network request is made. DevTools' Network panel stays empty.</p>
+            </div>
+          </li>
+          <li>
+            <span class="flow-num">2</span>
+            <div>
+              <strong>A Web Worker streams-parses it.</strong>
+              <p>The zip is unzipped in-memory by <code class="mono">fflate</code> and the XML is fed through <code class="mono">saxes</code> — a streaming SAX parser that keeps peak RAM around <strong>50 MB</strong> even on a full 200 MB export. The work runs on a background thread so the UI stays responsive.</p>
+            </div>
+          </li>
+          <li>
+            <span class="flow-num">3</span>
+            <div>
+              <strong>Seven markdown strings live in tab memory.</strong>
+              <p>We call <code class="mono">URL.createObjectURL</code> on each blob — that's a browser-local URL of the form <code class="mono">blob:http://…</code>. Clicking a download link triggers your browser's native <em>Save As</em>. Still local, still no network.</p>
+            </div>
+          </li>
+          <li>
+            <span class="flow-num">4</span>
+            <div>
+              <strong>Close the tab. Everything vanishes.</strong>
+              <p>No <code class="mono">localStorage</code>, no <code class="mono">IndexedDB</code>, no session caches of your data. The garbage collector reclaims every byte when the tab closes.</p>
+            </div>
+          </li>
+        </ol>
+
+        <h3>What we don't do</h3>
+        <ul class="privacy-nope">
+          <li><strong>No analytics.</strong> Not Google, Plausible, PostHog, or a home-grown pageview counter. Traffic is read from edge logs only — never from your browser.</li>
+          <li><strong>No cookies.</strong> No session tokens, no consent banners, no identifier of any kind.</li>
+          <li><strong>No third-party scripts.</strong> The only external request this page makes is to Google Fonts for Inter + JetBrains Mono. You can self-host those if you'd rather.</li>
+          <li><strong>No error reporting.</strong> Crashes don't phone home to Sentry or anywhere else.</li>
+          <li><strong>No accounts.</strong> There's nothing to sign into; there's no backend to sign into.</li>
+        </ul>
+
+        <h3>The one exception — phone-to-desktop handoff</h3>
+        <p>If you scan the QR code to send your zip from your phone to this desktop browser, a tiny <strong>~100-line Cloudflare Worker</strong> brokers the WebRTC handshake. It <em>must</em> see:</p>
+        <ul class="privacy-relay">
+          <li>A random 16-byte session id (generated fresh each time)</li>
+          <li>SDP offer / answer — about 1&nbsp;KB of codec + transport metadata</li>
+          <li>ICE candidates — network endpoints both browsers use for NAT traversal</li>
+        </ul>
+        <p>It <strong>never</strong> sees the zip. The file travels directly between your phone and desktop over an encrypted WebRTC DataChannel; the relay only helps them find each other. Source: <a href="https://github.com/jonnonz1/openhealth/tree/main/packages/signaling" rel="noopener"><code class="mono">packages/signaling</code></a> — read it, it's shorter than this section.</p>
+
+        <h3>Verify it yourself (takes a minute)</h3>
+        <ol class="privacy-verify">
+          <li>Open your browser DevTools → <strong>Network</strong> tab. Tick <em>Preserve log</em>.</li>
+          <li>Drop a zip onto the top of this page. Scroll through the request list.</li>
+          <li>Every row should be either the page assets, the Google Fonts CSS, or a <code class="mono">blob:</code> URL when you click download. Nothing else.</li>
+          <li>For the nuclear test: turn WiFi off, reload once from cache, and drop a zip. It still works.</li>
+        </ol>
+
+        <p class="privacy-source">
+          Read the source: <a href="https://github.com/jonnonz1/openhealth" rel="noopener"><strong>github.com/jonnonz1/openhealth</strong></a> · MIT-licensed · no minified blobs, no pre-built bundles committed. The site you're reading right now was built from the commit pinned in the repo.
         </p>
       </section>
     </main>

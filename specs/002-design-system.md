@@ -6,25 +6,28 @@
 
 ## Context
 
-The web app needs a consistent visual identity that reinforces the product's core promise — calm, trustworthy, privacy-respecting. The structural approach is adapted from the miki.nz design system (tokens, sentence case, mono for data) but the palette is swapped to a natural sage-green that reads "health" and "organic" rather than techy or medical.
+The web app needs a consistent visual identity that reinforces the product's core promise — calm, trustworthy, privacy-respecting. The structural approach is adapted from the miki.nz design system (tokens, sentence case, mono for data) but the palette uses a clean aqua/teal family that reads "fresh", "water" and "wellness" without tipping into medical clinical.
 
 ## Palette
 
-Source: [colorhunt.co/palette/edf1d69dc08b60996640513b](https://colorhunt.co/palette/edf1d69dc08b60996640513b)
+Source: [colorhunt.co/palette/e3fdfdcbf1f5a6e3e971c9ce](https://colorhunt.co/palette/e3fdfdcbf1f5a6e3e971c9ce)
+
+The four source swatches ladder light → deeper for page/panel/accent layers. `--primary` is derived by darkening the deepest swatch in HSL space so CTAs pass WCAG AA contrast with white text. `--ink` values share the hue but are heavily desaturated for text hierarchy.
 
 | Token | Hex | Usage |
 |---|---|---|
-| `--bg` | `#EDF1D6` | Page background |
-| `--bg-soft` | `#DCE6C4` | Soft panels, callouts (derived) |
-| `--accent` | `#9DC08B` | Highlights, step numbers, soft borders |
-| `--primary` | `#609966` | Primary CTAs, links |
-| `--primary-hover` | `#4F8055` | Primary hover (derived) |
-| `--ink-strong` | `#40513B` | Headings, emphasis, footer bg |
-| `--ink` | `#4A5A42` | Body text (derived) |
-| `--ink-muted` | `#6B7A61` | Secondary / meta text (derived) |
+| `--bg` | `#E3FDFD` | Page background |
+| `--bg-soft` | `#CBF1F5` | Soft panels, callouts |
+| `--accent` | `#A6E3E9` | Highlights, soft borders, highlighter-style emphasis |
+| `--accent-strong` | `#71C9CE` | Guide phone bezel, secondary accents |
+| `--primary` | `#1A737A` | Primary CTAs, links, step badges, privacy banner (derived, passes WCAG AA on both `--bg` and `--surface`) |
+| `--primary-hover` | `#125A61` | Primary hover (derived) |
+| `--ink-strong` | `#0E2F32` | Headings, emphasis, footer bg (derived) |
+| `--ink` | `#1F4447` | Body text (derived) |
+| `--ink-muted` | `#557173` | Secondary / meta text (derived) |
 | `--surface` | `#FFFFFF` | Explicit white panels |
-| `--border` | `rgba(64, 81, 59, 0.15)` | Default borders |
-| `--border-strong` | `rgba(64, 81, 59, 0.30)` | Emphasised borders, inputs, dropzone |
+| `--border` | `rgba(14, 47, 50, 0.12)` | Default borders |
+| `--border-strong` | `rgba(14, 47, 50, 0.26)` | Emphasised borders, inputs, dropzone |
 
 All tokens live as CSS custom properties on `:root` in `packages/web/src/styles.css`. New colours must be added as named tokens before use.
 

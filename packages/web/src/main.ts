@@ -3,6 +3,8 @@ import { mountDropZone } from './components/DropZone.js';
 import { mountPrivacyNote } from './components/PrivacyNote.js';
 import { isHandoffAvailable, mountQrHandoff } from './components/QrHandoff.js';
 import { mountReceiver } from './components/Receiver.js';
+import { mountScrollReveal } from './components/ScrollReveal.js';
+import { mountPhoneWalkthrough } from './components/PhoneWalkthrough.js';
 
 /** Match `/r/:sessionId` — the mobile receiver route. */
 const RECEIVER_PATH = /^\/r\/([A-Za-z0-9_-]{16,})\/?$/;
@@ -46,6 +48,11 @@ function mountDesktopRoute(root: Document): void {
   } else if (qrHost) {
     qrHost.hidden = true;
   }
+
+  const walkthrough = root.getElementById('walkthrough-mount');
+  if (walkthrough) mountPhoneWalkthrough(walkthrough);
+
+  mountScrollReveal(root);
 }
 
 function mountReceiverRoute(root: Document, sessionId: string): void {
