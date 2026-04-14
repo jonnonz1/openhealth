@@ -69,6 +69,31 @@ There's also a `--bundle` mode that concatenates all seven into one `openhealth.
 
 ---
 
+## Want to keep the AI side local too? Run it through Ollama.
+
+ChatGPT and Claude are convenient — but if you'd rather your weight, sleep, and HR data *never* hit a third-party server, point a local model at it instead. [Ollama](https://ollama.com) is the easiest path.
+
+```bash
+# 1. Install Ollama
+brew install ollama
+# or download from https://ollama.com/download
+
+# 2. Pull a model with a 128k+ context window.
+#    llama3.1:8b runs comfortably on a 16 GB Mac;
+#    qwen2.5:14b or gpt-oss:20b if you've got more RAM.
+ollama pull llama3.1:8b
+
+# 3. Pipe in your bundled markdown + the prompt
+openhealth ~/Downloads/export.zip --bundle -o ./out
+cat out/prompt.md out/openhealth.md | ollama run llama3.1:8b
+```
+
+Or open [Open WebUI](https://docs.openwebui.com/) / [Chatbox](https://github.com/Bin-Huang/chatbox), attach the bundle, and chat over it like you would with ChatGPT.
+
+Now your export, the parser, the bundle, the model, *and* the chat all run on hardware you own. Your network panel stays empty the entire time.
+
+---
+
 ## Privacy
 
 Privacy is the architecture, not a feature.

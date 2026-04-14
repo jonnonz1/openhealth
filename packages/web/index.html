@@ -134,6 +134,39 @@
         </ul>
       </section>
 
+      <section id="ollama" class="panel ollama-panel">
+        <h2>Want to keep the AI side local too? Run it through Ollama.</h2>
+        <p class="ollama-lead">ChatGPT and Claude are convenient — but if you'd rather your weight, sleep, and HR data <em>never</em> hit a third-party server, point a local model at it instead. <a href="https://ollama.com" rel="noopener">Ollama</a> is the easiest way: one binary, one model pull, ask questions over your own GPU.</p>
+        <ol class="ollama-steps">
+          <li>
+            <span class="ollama-num">1</span>
+            <div>
+              <strong>Install Ollama</strong>
+              <pre><code class="mono">brew install ollama
+# or download from <a href="https://ollama.com/download" rel="noopener">ollama.com/download</a></code></pre>
+            </div>
+          </li>
+          <li>
+            <span class="ollama-num">2</span>
+            <div>
+              <strong>Pull a model</strong>
+              <p>Anything with a 128k+ context window. <code class="mono">llama3.1:8b</code> runs comfortably on a 16&nbsp;GB Mac. <code class="mono">qwen2.5:14b</code> or <code class="mono">gpt-oss:20b</code> if you've got more RAM.</p>
+              <pre><code class="mono">ollama pull llama3.1:8b</code></pre>
+            </div>
+          </li>
+          <li>
+            <span class="ollama-num">3</span>
+            <div>
+              <strong>Pipe in your bundle + the prompt</strong>
+              <p>Use <code class="mono">--bundle</code> in the CLI, or click <em>Download bundled openhealth.md</em> in the browser, then:</p>
+              <pre><code class="mono">cat prompt.md openhealth.md | ollama run llama3.1:8b</code></pre>
+              <p>Or open <a href="https://docs.openwebui.com/" rel="noopener">Open WebUI</a> / <a href="https://github.com/Bin-Huang/chatbox" rel="noopener">Chatbox</a>, attach the bundle, and chat over it like you would with ChatGPT.</p>
+            </div>
+          </li>
+        </ol>
+        <p class="ollama-footnote">Now your export, the parser, the bundle, the model, <em>and</em> the chat all run on hardware you own. Your network panel stays empty the entire time.</p>
+      </section>
+
       <section id="privacy" class="callout privacy-deep">
         <h2>Your data never leaves this device.</h2>
         <p class="privacy-lead">Not as a principle — as a <em>mechanism</em>. Every byte of your export is parsed inside this browser tab. There is no "upload" endpoint because there is no server to upload it to.</p>
